@@ -66,5 +66,59 @@ connectDB().then(() => {
 })
 
 
-<!-- @@@@@   2. Adding Routers -->
+<!-- @@@@@@@@@@@@@@@@@@@@@@@@   2. Adding Routers  @@@@@@@@@@@@@@@@@@@@@@@@-->
+
+1 . Create Routes folder
+
+<!-- 1 -->
+<!-- Add new Router File  'authRouter'  -->
+<!-- Create router object and add CRUD Methods  and export router object -->
+
+const express = require('express');
+const router = express.Router();
+
+router.post('/register', (req, res) => {
+    user = req.body;
+    res.status(201).json({
+        message: 'User registered successfully',
+        user,
+    });
+});
+
+
+module.exports = router;
+
+<!-- 2 -->
+<!-- Add index.js file  Basic Router  -->
+<!-- Create router object and use 'use' middleware to append the path and export router object -->
+
+const express = require('express');
+const authRouter = require('./authRouter');
+
+const router = express.Router();
+
+router.use('/auth', authRouter);
+
+module.exports = router;
+
+<!-- 3 -->
+<!-- In the APP File ======>  src/app.js  -->
+<!-- Add the  New Router File and Add to Middleware to append to all the routes -->
+
+const express = require('express');
+
+<!-- New Router File -->
+const routes = require('./routes/index');
+
+const app = express();
+
+// Middleware to parse JSON requests
+app.use(express.json());
+
+
+<!-- Add to Middleware to append to all the routes -->
+app.use('/v1', routes);
+
+module.exports = app;
+
 
