@@ -1,0 +1,19 @@
+{
+  "name": "dev-tinder-recap",
+  "version": "1.0.0",
+  "description": "node js learn",
+  "main": "app.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "mongodb": "^6.15.0",
+    "mongoose": "^8.13.2",
+    "validator": "^13.15.0"
+  }
+}
